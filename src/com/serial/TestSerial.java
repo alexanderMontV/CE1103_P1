@@ -2,6 +2,8 @@ package com.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public class TestSerial {
     public static void main(String[] args) {
         int BaudRate = 115200;
@@ -52,7 +54,7 @@ public class TestSerial {
                     System.out.print("Read " + numRead + " bytes -");
 
                     //Convert bytes to String
-                    String S = new String(readBuffer, "UTF-8");
+                    String S = new String(readBuffer, UTF_8);
 
                     System.out.println("Received -> "+ S);}
 
