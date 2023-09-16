@@ -4,10 +4,13 @@ public class DoubleEndedList {
     private Node tail;
     private int size;
 
+    private Node current;
+
     public DoubleEndedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
+        this.current = null;
     }
 
     public boolean isEmpty() { return this.head == null; }
@@ -34,6 +37,7 @@ public class DoubleEndedList {
             this.head = this.tail = newNode;
         } else {
             this.tail.setNext(newNode);
+            newNode.setPrev(this.tail);
             this.tail = newNode;
         }
     }
@@ -45,6 +49,33 @@ public class DoubleEndedList {
             this.size--;
         }
         return null;
+    }
+    public Node getLast() {
+        return this.tail;
+    }
+
+    public void inicializar(){
+        int i;
+        for (i=0;i<5;i++){
+            this.insertLast(i);
+        }
+        this.current=this.head;
+    }
+
+    public void nextElement (){
+        if (this.current.getNext() != null){
+        this.current=this.current.getNext();}
+    }
+    public void prevElement (){
+        if (this.current.getPrev() != null){
+            this.current=this.current.getPrev();}
+    }
+    public void displayList() {
+        Node current = this.head;
+        while (current != null) {
+            System.out.println(current.getElement());
+            current = current.getNext();
+        }
     }
 
 }
