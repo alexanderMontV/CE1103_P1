@@ -1,4 +1,4 @@
-public class matrixTest {
+public class Matriz {
 
     private DoubleEndedList fila;
     private DoubleEndedList col1;
@@ -7,7 +7,7 @@ public class matrixTest {
     private DoubleEndedList col4;
     private DoubleEndedList col5;
 
-    public matrixTest(){
+    public Matriz(){
         this.fila = new DoubleEndedList();
         this.col1 = new DoubleEndedList();
         this.col2 = new DoubleEndedList();
