@@ -77,5 +77,9 @@ public class DoubleEndedList {
             current = current.getNext();
         }
     }
+    public Node getCurrent(){
+        return  this.current;
+    }
+
 
 }

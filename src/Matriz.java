@@ -27,4 +27,30 @@ public class Matriz {
         this.col4.inicializar();
         this.col5.inicializar();
     }
+    public void moverArriba(){
+        this.fila.prevElement();
+    }
+    public void moverAbajo(){
+        this.fila.nextElement();
+    }
+    public void moverDerecha(){
+        this.col1.nextElement();
+        this.col2.nextElement();
+        this.col3.nextElement();
+        this.col4.nextElement();
+        this.col5.nextElement();
+    }
+    public void moverIzquierda(){
+        this.col1.prevElement();
+        this.col2.prevElement();
+        this.col3.prevElement();
+        this.col4.prevElement();
+        this.col5.prevElement();
+    }
+    public Node actual(){
+        Node col = this.fila.getCurrent();
+        DoubleEndedList colum = (DoubleEndedList) col.getElement();
+        return colum.getCurrent();
+    }
+
 }
