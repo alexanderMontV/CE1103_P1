@@ -1,28 +1,30 @@
 public class matrixTest {
-    public static void main(String[] args) {
-        DoubleEndedList fila = new DoubleEndedList();
-        DoubleEndedList col1 = new DoubleEndedList();
-        DoubleEndedList col2 = new DoubleEndedList();
-        DoubleEndedList col3 = new DoubleEndedList();
-        DoubleEndedList col4 = new DoubleEndedList();
-        DoubleEndedList col5 = new DoubleEndedList();
-        fila.insertLast(col1);
-        fila.insertLast(col2);
-        fila.insertLast(col3);
-        fila.insertLast(col4);
-        fila.insertLast(col5);
-        col1.inicializar();
-        col2.inicializar();
-        col3.inicializar();
-        col4.inicializar();
-        col5.inicializar();
 
-        col5.displayList();
+    private DoubleEndedList fila;
+    private DoubleEndedList col1;
+    private DoubleEndedList col2;
+    private DoubleEndedList col3;
+    private DoubleEndedList col4;
+    private DoubleEndedList col5;
 
-        Node hola = fila.getLast();
-        DoubleEndedList vam = (DoubleEndedList) hola.getElement();
-        Node hello = vam.getLast();
-        System.out.println(hello.getElement());
-
+    public matrixTest(){
+        this.fila = new DoubleEndedList();
+        this.col1 = new DoubleEndedList();
+        this.col2 = new DoubleEndedList();
+        this.col3 = new DoubleEndedList();
+        this.col4 = new DoubleEndedList();
+        this.col5 = new DoubleEndedList();
+    }
+    public void initMatrix(){
+        this.fila.insertLast(this.col1);
+        this.fila.insertLast(this.col2);
+        this.fila.insertLast(this.col3);
+        this.fila.insertLast(this.col4);
+        this.fila.insertLast(this.col5);
+        this.col1.inicializar();
+        this.col2.inicializar();
+        this.col3.inicializar();
+        this.col4.inicializar();
+        this.col5.inicializar();
     }
 }
