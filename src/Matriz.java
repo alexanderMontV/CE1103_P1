@@ -21,11 +21,11 @@ public class Matriz {
         this.fila.insertLast(this.col3);
         this.fila.insertLast(this.col4);
         this.fila.insertLast(this.col5);
-        this.col1.inicializar();
-        this.col2.inicializar();
-        this.col3.inicializar();
-        this.col4.inicializar();
-        this.col5.inicializar();
+        this.col1.inicializar(1);
+        this.col2.inicializar(2);
+        this.col3.inicializar(3);
+        this.col4.inicializar(4);
+        this.col5.inicializar(5);
     }
     public void moverArriba(){
         this.fila.prevElement();

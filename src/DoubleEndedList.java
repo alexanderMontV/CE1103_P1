@@ -54,10 +54,10 @@ public class DoubleEndedList {
         return this.tail;
     }
 
-    public void inicializar(){
+    public void inicializar(int num){
         int i;
         for (i=0;i<5;i++){
-            this.insertLast(i);
+            this.insertLast(i+1+(num*10));
         }
         this.current=this.head;
     }
