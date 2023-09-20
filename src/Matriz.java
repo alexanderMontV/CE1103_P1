@@ -52,5 +52,12 @@ public class Matriz {
         DoubleEndedList colum = (DoubleEndedList) col.getElement();
         return colum.getCurrent();
     }
+    public void printMat(){
+        col1.displayList();
+        col2.displayList();
+        col3.displayList();
+        col4.displayList();
+        col5.displayList();
+    }
 
 }

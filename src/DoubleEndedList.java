@@ -71,11 +71,13 @@ public class DoubleEndedList {
             this.current=this.current.getPrev();}
     }
     public void displayList() {
+        String col ="";
         Node current = this.head;
         while (current != null) {
-            System.out.println(current.getElement());
+            col+=current.getElement()+"  ";
             current = current.getNext();
         }
+        System.out.println(col);
     }
     public Node getCurrent(){
         return  this.current;
