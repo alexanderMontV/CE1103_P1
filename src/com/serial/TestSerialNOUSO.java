@@ -4,7 +4,7 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class TestSerial {
+public class TestSerialNOUSO {
     public static void main(String[] args) {
         int BaudRate = 115200;
         int DataBits = 8;
