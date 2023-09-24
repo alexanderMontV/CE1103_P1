@@ -10,8 +10,6 @@ public class Circle {
 
     @Override
     public String toString() {
-        return "objeto Circle{" +
-                "tempSelect=" + tempSelect +
-                '}';
+        return "CR";
     }
 }

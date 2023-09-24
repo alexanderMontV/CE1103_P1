@@ -5,12 +5,15 @@ public class DoubleEndedList {
     private int size;
 
     private Node current;
+    private Node tempCurrent;
+
 
     public DoubleEndedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
         this.current = null;
+        this.tempCurrent = null;
     }
 
     public boolean isEmpty() { return this.head == null; }
@@ -23,6 +26,8 @@ public class DoubleEndedList {
 
         if (this.isEmpty()) {
             this.head = this.tail = newNode;
+            this.current = this.head;
+            this.tempCurrent =this.head;
         } else {
             newNode.setNext(this.head);
             this.head = newNode;
@@ -35,6 +40,8 @@ public class DoubleEndedList {
 
         if (this.isEmpty()) {
             this.head = this.tail = newNode;
+            this.current=this.head;
+            this.tempCurrent =this.head;
         } else {
             this.tail.setNext(newNode);
             newNode.setPrev(this.tail);
@@ -55,33 +62,75 @@ public class DoubleEndedList {
     }
 
     public void inicializar(int num){
-        int i;
-        for (i=0;i<5;i++){
-            this.insertLast(i+1+(num*10));
+        if (num==1){
+            this.insertLast(new Circle());
+            this.insertLast(new LineH());
+            this.insertLast(new Circle());
+            this.insertLast(new LineH());
+            this.insertLast(new Circle());
+            this.insertLast(new LineH());
+            this.insertLast(new Circle());
+            this.insertLast(new LineH());
+            this.insertLast(new Circle());
         }
-        this.current=this.head;
+        else{
+            this.insertLast(new LineV());
+            this.insertLast(new Box());
+            this.insertLast(new LineV());
+            this.insertLast(new Box());
+            this.insertLast(new LineV());
+            this.insertLast(new Box());
+            this.insertLast(new LineV());
+            this.insertLast(new Box());
+            this.insertLast(new LineV());
+        }
+    }
+    public Object currentEl(){
+        Node crr = (Node) this.current.getElement();
+        return crr.getElement();
     }
 
     public void nextElement (){
         if (this.current.getNext() != null){
-        this.current=this.current.getNext();}
+        this.current=this.current.getNext();
+        this.setGameCurrent();
+        }
     }
     public void prevElement (){
         if (this.current.getPrev() != null){
-            this.current=this.current.getPrev();}
+            this.current=this.current.getPrev();
+            this.setGameCurrent();
+        }
     }
     public void displayList() {
-        String col ="";
+        String colP ="";
         Node current = this.head;
         while (current != null) {
-            col+=current.getElement()+"  ";
+            colP+=current.getElement()+"  ";
             current = current.getNext();
         }
-        System.out.println(col);
+        System.out.println(colP);
     }
     public Node getCurrent(){
         return  this.current;
     }
+    public void setCurrent(Node current){
+          this.current = current;
+    }
 
+    public void initCurrent(){
+        this.current =this.head;
+    }
+
+    public Node getHead(){
+        return this.head;
+    }
+
+    public void setGameCurrent(){
+        tempCurrent = current;
+    }
+    public void resetCurrent(){
+        current= tempCurrent;
+    }
 
 }

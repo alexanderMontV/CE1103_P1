@@ -1,8 +1,8 @@
-public class Line {
+public class LineV {
     private Boolean temp;
     private Boolean select;
 
-    public Line() {
+    public LineV() {
         this.temp=false;
     }
     public void setTemp(boolean status) { this.temp = status; }
@@ -12,9 +12,6 @@ public class Line {
 
     @Override
     public String toString() {
-        return "Objeto Clase Line{" +
-                "temp=" + temp +
-                ", select=" + select +
-                '}';
+        return "LV";
     }
 }

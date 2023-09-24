@@ -1,10 +1,10 @@
 public class Box {
     private String label;
     private Boolean fill;
-    private Line left;
-    private Line right;
-    private Line arriba;
-    private Line abajo;
+    private LineV left;
+    private LineV right;
+    private LineH arriba;
+    private LineH abajo;
 
     public Box() {
         this.label = "";
@@ -14,16 +14,16 @@ public class Box {
         this.arriba = null;
         this.abajo = null;
     }
-    public void setUP(Line arriba){
+    public void setUP(LineH arriba){
         this.arriba = arriba;
     }
-    public void setDW(Line abajo){
+    public void setDW(LineH abajo){
         this.abajo = abajo;
     }
-    public void setLF(Line left){
+    public void setLF(LineV left){
         this.left = left;
     }
-    public void setRG(Line right){
+    public void setRG(LineV right){
         this.right=right;
     }
 
@@ -39,8 +39,13 @@ public class Box {
             this.fill=true;
             return true;
         }
-        else{
+        else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "BX";
     }
 }
