@@ -3,8 +3,6 @@ public class Main {
         Matriz mat = new Matriz();
         mat.initMatrix();
         mat.printMat();
-        System.out.println("_ _ _ _ _ _ _");
-        mat.printMat();
         mat.setBoxes();
         //System.out.println(mat.actual().getElement());
     }
