@@ -143,13 +143,6 @@ public class Matriz {
 
     }
 
-    public void setNextCurrent(DoubleEndedList col){
-        col.setCurrent(col.getCurrent().getNext());
-    }
-    public Object nextColCurrentElement(Node current){
-        DoubleEndedList nextCol = (DoubleEndedList) current.getNext().getElement();
-        return nextCol.getCurrent().getElement();
-    }
     public Object getCurrentElement(Node currentCol){
         DoubleEndedList cLL = (DoubleEndedList) currentCol.getNext().getElement();
         return cLL.getCurrent().getElement();
