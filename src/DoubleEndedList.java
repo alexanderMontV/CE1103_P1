@@ -93,13 +93,11 @@ public class DoubleEndedList {
     public void nextElement (){
         if (this.current.getNext() != null){
         this.current=this.current.getNext();
-        this.setGameCurrent();
         }
     }
     public void prevElement (){
         if (this.current.getPrev() != null){
             this.current=this.current.getPrev();
-            this.setGameCurrent();
         }
     }
     public void displayList() {
@@ -126,9 +124,6 @@ public class DoubleEndedList {
         return this.head;
     }
 
-    public void setGameCurrent(){
-        tempCurrent = current;
-    }
     public void resetCurrent(){
         current= tempCurrent;
     }

@@ -47,6 +47,9 @@ public class Matriz {
         return (DoubleEndedList) fila.getCurrent().getElement();
     }
 
+    private DoubleEndedList getCol(Node fila) {
+        return (DoubleEndedList) fila.getElement();
+    }
     public void moverArriba(){
         if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class){
             this.fila.prevElement();
@@ -57,39 +60,58 @@ public class Matriz {
         }
     }
     public void moverAbajo(){
-        if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class){
-            this.fila.nextElement();
-        }
-        else{
-            this.fila.nextElement();
-            this.fila.nextElement();
-        }
+        if (this.fila.getCurrent().getNext() !=null){
+                if (getCurrentElement(this.fila.getCurrent()).getClass() != LineH.class){
+                    this.fila.nextElement();
+                }
+                else if (this.fila.getCurrent().getNext() !=null && this.fila.getCurrent().getNext().getNext() !=null){
+                    this.fila.nextElement();
+                    this.fila.nextElement();
+        }}
     }
 
+    /**
+     * Mover derecha funcional
+     */
     public void moverDerecha(){
-        while (this.fila.getCurrent() != null) {
-            if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class && this.fila.getCurrent().getNext() != null){
-                getCurrentCol(this.fila).nextElement();
-            }
-            else if (this.fila.getCurrent().getNext().getNext() != null){
-                getCurrentCol(this.fila).nextElement();
-                getCurrentCol(this.fila).nextElement();
-            }
-                this.fila.nextElement();
+        Node current=this.fila.getHead();
+        if (this.fila.getCurrent().getNext() != null){
+            System.out.println("Matriz.MD getcurrentElement class" + getCurrentElement(this.fila.getCurrent()).getClass());
+                if (getCurrentElement(this.fila.getCurrent()).getClass() != LineV.class){
+                    while (current != null) {
+                        getCol(current).nextElement();
+                        current=current.getNext();
+                    }
+                }
+                else if (this.fila.getCurrent().getNext().getNext() != null){
+                    while (current != null) {
+                        getCol(current).nextElement();
+                        getCol(current).nextElement();
+                        current=current.getNext();
+                    }
+                }
         }
     }
+    /**
+     * Mover Izquierda funcional
+     * */
     public void moverIzquierda(){
-        while (this.fila.getCurrent() != null) {
-            if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class){
-                getCurrentCol(this.fila).prevElement();
+        Node current=this.fila.getHead();
+        if (this.fila.getCurrent().getNext() != null){
+            if (getCurrentElement(this.fila.getCurrent()).getClass() != LineV.class){
+                while (current != null) {
+                    getCol(current).prevElement();
+                    current=current.getNext();
+                }
             }
-            else{
-                getCurrentCol(this.fila).prevElement();
-                getCurrentCol(this.fila).prevElement();
+            else if (this.fila.getCurrent().getNext().getNext() != null){
+                while (current != null) {
+                    getCol(current).prevElement();
+                    getCol(current).prevElement();
+                    current=current.getNext();
+                }
             }
-            this.fila.nextElement();
         }
-        this.fila.resetCurrent();
     }
     public Node actual(){
         Node col = this.fila.getCurrent();
@@ -115,14 +137,12 @@ public class Matriz {
                 nextNode=nextCol.getCurrent();
             }
             while (currentNod !=null){
-                System.out.println("columna");
                 Object currentEl = currentNod.getElement();
                 if (currentEl.getClass() == Box.class){
                     ((Box) currentEl).setRG((LineV) currentNod.getNext().getElement());
                     ((Box) currentEl).setLF((LineV) currentNod.getPrev().getElement());
                     ((Box) currentEl).setDW((LineH) nextNode.getElement());
                     ((Box) currentEl).setUP((LineH) prevNode.getElement());
-                    System.out.println("es un caja");
                 }
                 if (currentCol.getPrev() != null && currentCol.getNext() !=null){
                     prevNode=prevNode.getNext();
@@ -136,7 +156,7 @@ public class Matriz {
                 nextCol= (DoubleEndedList) currentCol.getNext().getElement();
             }
         }
-        System.out.println("fin");
+        System.out.println("CAJAS INICIALIZADAS - LINEAS DEFINIDAS");
     }
     public void CheckBoxes(String playerName){
 
@@ -144,7 +164,7 @@ public class Matriz {
     }
 
     public Object getCurrentElement(Node currentCol){
-        DoubleEndedList cLL = (DoubleEndedList) currentCol.getNext().getElement();
+        DoubleEndedList cLL = (DoubleEndedList) currentCol.getElement();
         return cLL.getCurrent().getElement();
     }
     public void printMat(){
