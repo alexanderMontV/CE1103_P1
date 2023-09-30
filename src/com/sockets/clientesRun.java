@@ -4,18 +4,31 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Clase que maneja la logica de la comunicacion cliente-servidor
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class clientesRun implements Runnable{
     private int myPort;
 
+    /**
+     * Constructor de la clase
+     */
     public clientesRun(){
         Thread escucho = new Thread(this);
         escucho.start();
     }
 
+    /**
+     * Metodo que retorna el puerto donde esta conectado
+     */
     public int getMyPort() {
         return myPort;
     }
 
+    /**
+     * Metodo que crea los sockets para la comunicacion
+     */
     @Override
     public void run() {
         try {
