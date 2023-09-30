@@ -10,7 +10,14 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que comunica datos especificos de un cliente con el servidor
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class jSocketClientes {
+    /**
+     * Metodo principal de la clase
+     */
     public static void main(String[] args) {
         clientesRun clienteescucha = new clientesRun();
         try {
