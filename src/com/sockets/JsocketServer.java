@@ -11,8 +11,9 @@ import com.serial.SerialClient;
  */
 public class JsocketServer {
     /**
-    * Metodo que inicia el servidor
-    */
+     * Clase que inicializa el servidor y maneja logica del juego
+     * @author Alex M., Bryan S., Ernesto Z.
+     */
     public static void main(String[] args) {
         serverRun runserver = new serverRun();
         SerialClient msc = new SerialClient();
