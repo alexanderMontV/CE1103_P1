@@ -1,15 +1,17 @@
 public class Matriz {
 
-    private DoubleEndedList fila;
-    private DoubleEndedList col1;
-    private DoubleEndedList col2;
-    private DoubleEndedList col3;
-    private DoubleEndedList col4;
-    private DoubleEndedList col5;
-    private DoubleEndedList col6;
-    private DoubleEndedList col7;
-    private DoubleEndedList col8;
-    private DoubleEndedList col9;
+    private final DoubleEndedList fila;
+    private final DoubleEndedList col1;
+    private final DoubleEndedList col2;
+    private final DoubleEndedList col3;
+    private final DoubleEndedList col4;
+    private final DoubleEndedList col5;
+    private final DoubleEndedList col6;
+    private final DoubleEndedList col7;
+    private final DoubleEndedList col8;
+    private final DoubleEndedList col9;
+
+    private boolean empty;
 
     public Matriz(){
         this.fila = new DoubleEndedList();
@@ -22,6 +24,7 @@ public class Matriz {
         this.col7 = new DoubleEndedList();
         this.col8 = new DoubleEndedList();
         this.col9 = new DoubleEndedList();
+        this.empty=true;
     }
     public void initMatrix(){
         this.fila.insertLast(this.col1);
@@ -40,7 +43,7 @@ public class Matriz {
             this.fila.setCurrent(this.fila.getCurrent().getNext());
         }
         initCurrent();
-
+        this.empty=false;
     }
 
     private DoubleEndedList getCurrentCol(DoubleEndedList fila) {
@@ -50,6 +53,8 @@ public class Matriz {
     private DoubleEndedList getCol(Node fila) {
         return (DoubleEndedList) fila.getElement();
     }
+
+    //COMPROBACIONES DE NULL PARA getNext
     public void moverArriba(){
         if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class){
             this.fila.prevElement();
@@ -64,7 +69,7 @@ public class Matriz {
                 if (getCurrentElement(this.fila.getCurrent()).getClass() != LineH.class){
                     this.fila.nextElement();
                 }
-                else if (this.fila.getCurrent().getNext() !=null && this.fila.getCurrent().getNext().getNext() !=null){
+                else{
                     this.fila.nextElement();
                     this.fila.nextElement();
         }}
@@ -76,14 +81,15 @@ public class Matriz {
     public void moverDerecha(){
         Node current=this.fila.getHead();
         if (this.fila.getCurrent().getNext() != null){
-            System.out.println("Matriz.MD getcurrentElement class" + getCurrentElement(this.fila.getCurrent()).getClass());
+
+            //System.out.println("Matriz.MD getcurrentElement class" + getCurrentElement(this.fila.getCurrent()).getClass());
                 if (getCurrentElement(this.fila.getCurrent()).getClass() != LineV.class){
                     while (current != null) {
                         getCol(current).nextElement();
                         current=current.getNext();
                     }
                 }
-                else if (this.fila.getCurrent().getNext().getNext() != null){
+                else {
                     while (current != null) {
                         getCol(current).nextElement();
                         getCol(current).nextElement();
@@ -92,7 +98,7 @@ public class Matriz {
                 }
         }
     }
-    /**
+    /**f
      * Mover Izquierda funcional
      * */
     public void moverIzquierda(){
@@ -104,7 +110,7 @@ public class Matriz {
                     current=current.getNext();
                 }
             }
-            else if (this.fila.getCurrent().getNext().getNext() != null){
+            else{
                 while (current != null) {
                     getCol(current).prevElement();
                     getCol(current).prevElement();
@@ -158,6 +164,12 @@ public class Matriz {
         }
         System.out.println("CAJAS INICIALIZADAS - LINEAS DEFINIDAS");
     }
+
+    /*
+    *
+    * TODO: IMPLEMENTAR CHECKBOXES
+    *
+    * */
     public void CheckBoxes(String playerName){
 
 
@@ -181,6 +193,13 @@ public class Matriz {
             this.fila.setCurrent(this.fila.getCurrent().getNext());
         }
         this.fila.setCurrent(this.fila.getHead());
+    }
+    public DoubleEndedList getFila(){
+        return this.fila;
+    }
+
+    public Boolean isEmpty(){
+        return this.empty;
     }
 
 }

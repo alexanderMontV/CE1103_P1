@@ -19,6 +19,7 @@ public class pruebaClaseC {
         msc.open();
         Matriz mat = new Matriz();
         mat.initMatrix();
+        mat.setBoxes();
         try {
             while (true) {
                 String mensajeR = msc.getMesg();

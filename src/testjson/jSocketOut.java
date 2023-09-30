@@ -1,7 +1,6 @@
 package testjson;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -10,14 +9,16 @@ import java.net.UnknownHostException;
 
 public class jSocketOut {
     public static void main(String[] args) {
+        outrun clienteescucha = new outrun();
         try {
             Socket mysocket = new Socket("localhost", 9999); //envía el paquete offline al server para indicar que el cliente está en se desconectó
-            String a = "Hola enviado a traves de gson";
-            Gson gson = new GsonBuilder().create();
-            Object msg = gson.toJson(a);
-
+            JsonObject jobj = new JsonObject();
+            jobj.addProperty("puerto",clienteescucha.getMyPort());
+            jobj.addProperty("mensaje","online");
+            jobj.addProperty("nombre","nombre");
+            String jsonO = String.valueOf(jobj);
             ObjectOutputStream flujo = new ObjectOutputStream(mysocket.getOutputStream());
-            flujo.writeObject(msg);
+            flujo.writeObject(jsonO);
 
             mysocket.close();
 

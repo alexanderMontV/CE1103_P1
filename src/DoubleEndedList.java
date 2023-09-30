@@ -5,7 +5,6 @@ public class DoubleEndedList {
     private int size;
 
     private Node current;
-    private Node tempCurrent;
 
 
     public DoubleEndedList() {
@@ -13,7 +12,6 @@ public class DoubleEndedList {
         this.tail = null;
         this.size = 0;
         this.current = null;
-        this.tempCurrent = null;
     }
 
     public boolean isEmpty() { return this.head == null; }
@@ -27,7 +25,6 @@ public class DoubleEndedList {
         if (this.isEmpty()) {
             this.head = this.tail = newNode;
             this.current = this.head;
-            this.tempCurrent =this.head;
         } else {
             newNode.setNext(this.head);
             this.head = newNode;
@@ -41,7 +38,6 @@ public class DoubleEndedList {
         if (this.isEmpty()) {
             this.head = this.tail = newNode;
             this.current=this.head;
-            this.tempCurrent =this.head;
         } else {
             this.tail.setNext(newNode);
             newNode.setPrev(this.tail);
@@ -124,8 +120,5 @@ public class DoubleEndedList {
         return this.head;
     }
 
-    public void resetCurrent(){
-        current= tempCurrent;
-    }
 
 }

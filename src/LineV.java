@@ -5,10 +5,10 @@ public class LineV {
     public LineV() {
         this.temp=false;
     }
-    public void setTemp(boolean status) { this.temp = status; }
-    public void setSelect(boolean status) { this.select = status; }
 
-    public boolean getSelected (){return this.select;}
+    public LineV(Boolean seleccionado) {
+        super(seleccionado);
+    }
 
     @Override
     public String toString() {

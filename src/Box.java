@@ -28,7 +28,7 @@ public class Box {
     }
 
     public void setName(String nombre){
-        if (!this.fill){this.label=nombre;}
+        if (!this.fill){this.label=nombre; this.fill=true;}
     }
 
     public boolean isFull(){
@@ -36,7 +36,6 @@ public class Box {
     }
     public boolean getSides(){
         if (this.left.getSelected() && this.right.getSelected() && this.arriba.getSelected() && this.abajo.getSelected()){
-            this.fill=true;
             return true;
         }
         else {

@@ -1,14 +1,12 @@
-public class LineH {
-    private Boolean temp;
-    private Boolean select;
+public class LineH extends Seleccionable{
 
     public LineH() {
-        this.temp=false;
+        super();
     }
-    public void setTemp(boolean status) { this.temp = status; }
-    public void setSelect(boolean status) { this.select = status; }
 
-    public boolean getSelected (){return this.select;}
+    public LineH(Boolean seleccionado) {
+        super(seleccionado);
+    }
 
     @Override
     public String toString() {
