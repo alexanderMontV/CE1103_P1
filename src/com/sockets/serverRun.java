@@ -13,14 +13,28 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Clase que maneja la lista de espera de jugadores y datos entre el cliente y servidor
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class serverRun implements Runnable {
 
+    /**
+     * Propiedad que representa la lista de jugadores
+     */
     Queue listaJugadores= new Queue();
+
+    /**
+     * Constructor de la clase
+     */
     public serverRun() {
         Thread escucho = new Thread(this);
         escucho.start();
     }
 
+    /**
+     * Metodo que maneja la lista de espera y recibe informacion de los clientes
+     */
     @Override
     public void run() {
         try {
@@ -49,6 +63,10 @@ public class serverRun implements Runnable {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo que actualiza la lista de espera y actualiza las matrices de los clientes
+     */
     public void sendMensaje(String key) throws IOException {
             //mensaje genérico jugadores espera.
             if (key.equals("OK")) {
