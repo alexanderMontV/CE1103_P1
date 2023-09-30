@@ -30,7 +30,6 @@ public class Servidor  {
 /**
  * Clase MarcoApp que muestra el Frame de la pantalla de chat, además
  * se añaden los elementos visuales, el cuadro de texto que muestra los mensajes recibidos por el server
- * @see "https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html
  * */
 class MarcoServidor extends JFrame implements Runnable {
     /**
