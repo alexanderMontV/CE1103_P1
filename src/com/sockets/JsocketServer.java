@@ -5,7 +5,14 @@ import com.estructuras.jugador;
 import com.seleccionables.Seleccionable;
 import com.serial.SerialClient;
 
+/**
+ * Clase que inicializa el servidor y maneja logica del juego
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class JsocketServer {
+    /**
+    * Metodo que inicia el servidor
+    */
     public static void main(String[] args) {
         serverRun runserver = new serverRun();
         SerialClient msc = new SerialClient();
