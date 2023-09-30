@@ -7,6 +7,8 @@ import java.net.Socket;
 public class clientesRun implements Runnable{
     private int myPort;
 
+    private String mensajeRecivido;
+
     public clientesRun(){
         Thread escucho = new Thread(this);
         escucho.start();
@@ -38,8 +40,7 @@ public class clientesRun implements Runnable{
                 String msg = (String) flujoEntrada.readObject();
                 //verifica si no es un mensaje de estado, entonces añade el mensaje recibido al area de chat
                 if (msg != null){
-                    System.out.println(msg);
-
+                    this.mensajeRecivido=msg;
                     //si es un mensaje de estado se actualiza la lista de dirección desplegable
                 }
             }
@@ -49,4 +50,12 @@ public class clientesRun implements Runnable{
         }
     }
 
+    public String getMensajeRecivido() {
+        String temp= mensajeRecivido;
+        setMensajeRecividot();
+        return temp;
+    }
+    public void setMensajeRecividot(){
+        mensajeRecivido=null;
+    }
 }

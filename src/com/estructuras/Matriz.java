@@ -22,6 +22,8 @@ public class Matriz {
 
     private boolean empty;
 
+    private int pos;
+
     public Matriz(){
         this.fila = new DoubleEndedList();
         this.col1 = new DoubleEndedList();
@@ -35,6 +37,7 @@ public class Matriz {
         this.col9 = new DoubleEndedList();
         this.empty=true;
         this.cajasLlenas=0;
+        this.pos=01;
     }
     public void initMatrix(){
         this.fila.insertLast(this.col1);
@@ -55,7 +58,6 @@ public class Matriz {
         initCurrent();
         this.empty=false;
     }
-
     private DoubleEndedList getCurrentCol(DoubleEndedList fila) {
         return (DoubleEndedList) fila.getCurrent().getElement();
     }
@@ -68,20 +70,24 @@ public class Matriz {
     public void moverArriba(){
         if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class){
             this.fila.prevElement();
+            this.pos-=10;
         }
         else{
             this.fila.prevElement();
             this.fila.prevElement();
+            this.pos-=20;
         }
     }
     public void moverAbajo(){
         if (this.fila.getCurrent().getNext() !=null){
                 if (getCurrentElement(this.fila.getCurrent()).getClass() != LineH.class){
                     this.fila.nextElement();
+                    this.pos +=10;
                 }
                 else{
                     this.fila.nextElement();
                     this.fila.nextElement();
+                    this.pos +=20;
         }}
     }
 
@@ -94,16 +100,20 @@ public class Matriz {
 
             //System.out.println("com.estructuras.Matriz.MD getcurrentElement class" + getCurrentElement(this.fila.getCurrent()).getClass());
                 if (getCurrentElement(this.fila.getCurrent()).getClass() != LineV.class){
+                    this.pos+=1;
                     while (current != null) {
                         getCol(current).nextElement();
                         current=current.getNext();
+
                     }
                 }
                 else {
+                    this.pos+=2;
                     while (current != null) {
                         getCol(current).nextElement();
                         getCol(current).nextElement();
                         current=current.getNext();
+
                     }
                 }
         }
@@ -115,12 +125,14 @@ public class Matriz {
         Node current=this.fila.getHead();
         if (this.fila.getCurrent().getNext() != null){
             if (getCurrentElement(this.fila.getCurrent()).getClass() != LineV.class){
+                this.pos-=1;
                 while (current != null) {
                     getCol(current).prevElement();
                     current=current.getNext();
                 }
             }
             else{
+                this.pos-=2;
                 while (current != null) {
                     getCol(current).prevElement();
                     getCol(current).prevElement();
@@ -229,4 +241,7 @@ public class Matriz {
         return this.empty;
     }
 
+    public int getPos() {
+        return pos;
+    }
 }

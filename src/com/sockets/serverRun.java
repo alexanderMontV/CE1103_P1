@@ -15,6 +15,7 @@ import java.net.Socket;
 
 public class serverRun implements Runnable {
 
+    private int actual;
     Queue listaJugadores= new Queue();
     public serverRun() {
         Thread escucho = new Thread(this);
@@ -60,7 +61,7 @@ public class serverRun implements Runnable {
                     ObjectOutputStream paqueteE = new ObjectOutputStream(socketDestino.getOutputStream());
                     //TODO Enviar para Actualizar las matrices clientes
                     JsonObject jobj = new JsonObject();
-                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("mensaje", key );
                     jobj.addProperty("data", "actualizar");
                     String jsonO = String.valueOf(jobj);
                     paqueteE.writeObject("paqueteR");
@@ -84,7 +85,7 @@ public class serverRun implements Runnable {
 
                     //TODO Enviar para Actualizar las matrices clientes
                     JsonObject jobj = new JsonObject();
-                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("mensaje", key);
                     jobj.addProperty("data", "actualizar");
                     String jsonO = String.valueOf(jobj);
                     paqueteE.writeObject("paqueteR");
@@ -107,7 +108,7 @@ public class serverRun implements Runnable {
 
                     //TODO Enviar para Actualizar las matrices clientes
                     JsonObject jobj = new JsonObject();
-                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("mensaje", key );
                     jobj.addProperty("data", "gameover");
                     String jsonO = String.valueOf(jobj);
                     paqueteE.writeObject("paqueteR");
@@ -122,7 +123,7 @@ public class serverRun implements Runnable {
             }
             else {
                 DoubleEndedList listatodos = this.listaJugadores.getList();
-                Node current = listatodos.getHead();
+                Node current = listatodos.getHead().getNext();
                 while (current != null) {
                     jugador tempJugador = (jugador) current.getElement();
                     Socket socketDestino = new Socket("localhost", tempJugador.getPuerto()); //Socket salida
@@ -131,10 +132,10 @@ public class serverRun implements Runnable {
 
                     //TODO Enviar para Actualizar las matrices clientes
                     JsonObject jobj = new JsonObject();
-                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("mensaje", key);
                     jobj.addProperty("data", "actualizar");
                     String jsonO = String.valueOf(jobj);
-                    paqueteE.writeObject("paqueteR");
+                    paqueteE.writeObject(jsonO);
 
                     paqueteE.close();
 
@@ -154,13 +155,18 @@ public class serverRun implements Runnable {
 
                 jobj.addProperty("mensaje", "yourturn");
                 jobj.addProperty("data", key);
+                jobj.addProperty("actualpos",actual);
                 String jsonO = String.valueOf(jobj);
 
-                paqueteE.writeObject("Se ha movido");
+                paqueteE.writeObject("jobj");
 
                 paqueteE.close();
 
                 socketDestino.close();
             }
+    }
+
+    public void setActual(int pos) {
+        this.actual=pos;
     }
 }

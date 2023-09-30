@@ -75,8 +75,7 @@ public class DoubleEndedList {
             this.insertLast(new Circle());
             this.insertLast(new LineH());
             this.insertLast(new Circle());
-        }
-        else{
+        } else{
             this.insertLast(new LineV());
             this.insertLast(new Box());
             this.insertLast(new LineV());

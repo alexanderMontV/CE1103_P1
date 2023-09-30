@@ -1,9 +1,10 @@
 package com.pruebasVariadas;
 
 import com.estructuras.Matriz;
+import com.interfaz.GameScreen;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Matriz mat = new Matriz();
         System.out.println(mat.isEmpty());
         mat.initMatrix();
@@ -17,6 +18,8 @@ public class Main {
         System.out.println(mat.actual());
         mat.moverAbajo();
         System.out.println(mat.actual());
+        GameScreen hola = new GameScreen();
+        hola.init();
 
 
         //System.out.println(mat.actual().getElement());

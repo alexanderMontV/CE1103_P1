@@ -26,6 +26,7 @@ public class JsocketServer {
                         Seleccionable tempn = (Seleccionable) mat.actual().getElement();
                         tempn.setTemp(true);
                         runserver.sendMensaje("DR");
+                        runserver.setActual(mat.getPos());
                     } else if (mensajeR.equals("IZ")) {
                         Seleccionable tempc = (Seleccionable) mat.actual().getElement();
                         tempc.setTemp(false);
@@ -33,6 +34,7 @@ public class JsocketServer {
                         Seleccionable tempn = (Seleccionable) mat.actual().getElement();
                         tempn.setTemp(true);
                         runserver.sendMensaje("IZ");
+                        runserver.setActual(mat.getPos());
                     } else if (mensajeR.equals("UP")) {
                         Seleccionable tempc = (Seleccionable) mat.actual().getElement();
                         tempc.setTemp(false);
@@ -40,6 +42,7 @@ public class JsocketServer {
                         Seleccionable tempn = (Seleccionable) mat.actual().getElement();
                         tempn.setTemp(true);
                         runserver.sendMensaje("UP");
+                        runserver.setActual(mat.getPos());
                     } else if (mensajeR.equals("DW")) {
                         Seleccionable tempc = (Seleccionable) mat.actual().getElement();
                         tempc.setTemp(false);
@@ -47,18 +50,22 @@ public class JsocketServer {
                         Seleccionable tempn = (Seleccionable) mat.actual().getElement();
                         tempn.setTemp(true);
                         runserver.sendMensaje("DW");
+                        runserver.setActual(mat.getPos());
                     } else if (mensajeR.equals("OK"))
 
                         if (mat.CheckBoxes("nombre")){
                         Seleccionable select = (Seleccionable) mat.actual().getElement();
                         select.setSelect(true);
                         if (!mat.CheckBoxes(templayer.getNombre())){;
-                            runserver.sendMensaje("OK");}
+                            runserver.sendMensaje("OK");
+                            runserver.setActual(mat.getPos());}
                         else if (mat.CheckFull()){
                             runserver.sendMensaje("gameover");
+                            runserver.setActual(mat.getPos());
                         }
                         else{
                             runserver.sendMensaje("ganoCaja");
+                            runserver.setActual(mat.getPos());
                         }
 
                     }
