@@ -1,6 +1,6 @@
 package com.seleccionables;
 
-public class Box {
+public class Box extends Seleccionable {
     private String label;
     private Boolean fill;
     private LineV left;

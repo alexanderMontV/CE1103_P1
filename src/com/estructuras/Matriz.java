@@ -214,6 +214,27 @@ public class Matriz {
 
     }
 
+    public Boolean CheckFull(){
+        Node current = fila.getHead();
+        while (current !=null) {
+            DoubleEndedList col = getCol(current);
+            Node currentNode = col.getHead();
+            while (currentNode !=null){
+                if (currentNode.getElement().getClass() == Box.class){
+                    Box cajatemp = (Box) currentNode.getElement();
+                    if (!cajatemp.isFull()){
+                        return false;
+                    }
+                }
+                currentNode=currentNode.getNext();
+            }
+            current=current.getNext();
+        }
+        return true;
+
+
+    }
+
     public Object getCurrentElement(Node currentCol){
         DoubleEndedList cLL = (DoubleEndedList) currentCol.getElement();
         return cLL.getCurrent().getElement();

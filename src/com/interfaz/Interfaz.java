@@ -125,7 +125,7 @@ public class Interfaz extends JFrame implements Runnable{
         return (x >= l.getX() && x <= l.getX() + l.getWidth()) && (y >= l.getY() && y <= l.getY() + l.getHeight());
     }
 
-    public static void main(String[] args) {
+    public static   void main(String[] args) {
         new Interfaz("Juego");
     }
 

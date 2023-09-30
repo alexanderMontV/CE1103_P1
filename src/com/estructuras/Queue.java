@@ -19,4 +19,8 @@ public class Queue {
       return this.list.getHead();
     }
 
+    public DoubleEndedList getList() {
+        return list;
+    }
+
 }

@@ -10,6 +10,14 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
+
+
+
+
+
+
+
+
 public class jSocketClientes {
     public static void main(String[] args) {
         clientesRun clienteescucha = new clientesRun();
