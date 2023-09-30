@@ -1,4 +1,4 @@
-public class Circle {
+public class Circle extends Seleccionable {
 
     private boolean tempSelect;
 

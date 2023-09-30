@@ -1,9 +1,7 @@
-public class LineV {
-    private Boolean temp;
-    private Boolean select;
+public class LineV extends Seleccionable {
 
     public LineV() {
-        this.temp=false;
+        super();
     }
 
     public LineV(Boolean seleccionado) {
