@@ -34,4 +34,8 @@ public class jugador {
     public void setCuadrosGanados(int cuadrosGanados) {
         this.cuadrosGanados = cuadrosGanados;
     }
+
+    public void masCaja(){
+        this.cuadrosGanados++;
+    }
 }
