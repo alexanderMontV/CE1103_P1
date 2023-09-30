@@ -1,3 +1,5 @@
+package com.seleccionables;
+
 public class Box {
     private String label;
     private Boolean fill;

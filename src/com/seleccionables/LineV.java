@@ -1,3 +1,5 @@
+package com.seleccionables;
+
 public class LineV extends Seleccionable {
 
     public LineV() {

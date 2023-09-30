@@ -1,3 +1,5 @@
+package com.seleccionables;
+
 public class Seleccionable {
     private Boolean select;
     private Boolean temp;

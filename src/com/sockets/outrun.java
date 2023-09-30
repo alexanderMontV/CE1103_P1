@@ -1,4 +1,4 @@
-package testjson;
+package com.sockets;
 
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;

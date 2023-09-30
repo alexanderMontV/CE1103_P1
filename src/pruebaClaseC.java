@@ -1,3 +1,6 @@
+import com.estructuras.Matriz;
+import com.serial.SerialClient;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;

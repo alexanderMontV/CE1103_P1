@@ -1,4 +1,4 @@
-package testjson;
+package com.sockets;
 
 import com.google.gson.JsonObject;
 

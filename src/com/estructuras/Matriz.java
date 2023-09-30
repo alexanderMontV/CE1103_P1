@@ -1,3 +1,12 @@
+package com.estructuras;
+
+import com.estructuras.DoubleEndedList;
+import com.estructuras.Node;
+import com.seleccionables.Box;
+import com.seleccionables.Circle;
+import com.seleccionables.LineH;
+import com.seleccionables.LineV;
+
 public class Matriz {
 
     private final DoubleEndedList fila;
@@ -82,7 +91,7 @@ public class Matriz {
         Node current=this.fila.getHead();
         if (this.fila.getCurrent().getNext() != null){
 
-            //System.out.println("Matriz.MD getcurrentElement class" + getCurrentElement(this.fila.getCurrent()).getClass());
+            //System.out.println("com.estructuras.Matriz.MD getcurrentElement class" + getCurrentElement(this.fila.getCurrent()).getClass());
                 if (getCurrentElement(this.fila.getCurrent()).getClass() != LineV.class){
                     while (current != null) {
                         getCol(current).nextElement();

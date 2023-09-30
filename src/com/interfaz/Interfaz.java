@@ -1,3 +1,5 @@
+package com.interfaz;
+
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;

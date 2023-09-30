@@ -14,7 +14,7 @@ public class pbaJson {
 // Le parece hacer llamada, es que creo que por aquí no sirvió
 
 /* Pendientes:
-    Interfaz con LinkedList
+    com.interfaz.Interfaz con LinkedList
     Implementar y probar bien el queue con los puertos nuevos
     game over (reiniciar)
 

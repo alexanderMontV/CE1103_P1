@@ -1,3 +1,5 @@
+package com.seleccionables;
+
 public class Circle extends Seleccionable {
 
     private boolean tempSelect;

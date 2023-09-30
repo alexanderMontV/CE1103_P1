@@ -1,4 +1,4 @@
-package testjson;
+package com.sockets;
 
 public class JsocketIn {
     public static void main(String[] args) {

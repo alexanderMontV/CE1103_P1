@@ -1,4 +1,4 @@
-package testjson;
+package com.sockets;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -13,14 +13,13 @@ public class inrun implements Runnable {
     public inrun() {
         Thread escucho = new Thread(this);
         escucho.start();
+
     }
 
     @Override
     public void run() {
         try {
             ServerSocket server = new ServerSocket(9999); //Socket de entrada que recibe los mensajes
-
-            //paqueteDato paqueteR;
 
             while (true) {//queda a la espera de un nuevo mensaje
 

@@ -1,4 +1,6 @@
-public class LineH extends Seleccionable{
+package com.seleccionables;
+
+public class LineH extends Seleccionable {
 
     public LineH() {
         super();

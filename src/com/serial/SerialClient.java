@@ -1,3 +1,5 @@
+package com.serial;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import java.nio.charset.StandardCharsets;
