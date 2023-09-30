@@ -4,12 +4,20 @@ import com.fazecast.jSerialComm.SerialPort;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Clase que maneja la comunicacion serial
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class SerialClient {
     int BaudRate;
     int DataBits;
     int StopBits;
     int Parity;
     SerialPort MySerialPort;
+
+    /**
+     * Constructor
+     */
     public SerialClient() {
         this.BaudRate = 9600;
         this.DataBits = 8;
@@ -18,6 +26,10 @@ public class SerialClient {
         SerialPort[] AvailablePorts = SerialPort.getCommPorts();
         this.MySerialPort = AvailablePorts[0];
     }
+
+    /**
+     * Metodo que abre la coneccion
+     */
     public void open(){
         MySerialPort.setComPortParameters(this.BaudRate,
                 this.DataBits,
@@ -28,6 +40,11 @@ public class SerialClient {
                 10000);
         MySerialPort.openPort();
     }
+
+    /**
+     * Metodo que retorna los datos del arduino
+     * @return datos del arduino
+     */
     public String getMesg() {
         String data = null;
         if (MySerialPort.bytesAvailable() > 0) { //Se verifica que haya bytes disponibles para leer en el puerto
@@ -38,6 +55,10 @@ public class SerialClient {
         }
         return data;
     }
+
+    /**
+     * Metodo que cierra la coneccion
+     */
     public void CloseConn(){
         MySerialPort.closePort();
     }

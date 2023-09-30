@@ -12,11 +12,22 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que maneja las pantallas de juego y se comunica con el server
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class GameScreen extends Application {
+    /**
+     * Metodo que inicia la aplicacion
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Metodo que establece coneccion con el servidor y muestra la aplicacion
+     * @param stage escenario de la interfaz
+     */
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -50,7 +61,7 @@ public class GameScreen extends Application {
         } catch (IOException ex) {
             System.exit(0);
             throw new RuntimeException(ex);
-        }catch (Exception e2) {
+        } catch (Exception e2) {
             System.exit(0);
             System.out.println("Error desconocido 2");
         }

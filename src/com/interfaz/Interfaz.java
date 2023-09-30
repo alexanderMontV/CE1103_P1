@@ -5,12 +5,29 @@ import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * Clase que crea y maneja la interfaz del juego
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class Interfaz extends JFrame {
 
+    /**
+     * Propiedad que representa puntos en la interfaz
+     */
     JLabel[][] dots = new JLabel[5][5];
+    /**
+     * Propiedad que representa lineas horizontales en la interfaz
+     */
     JLabel[][] herizontalLines = new JLabel[4][4];
+    /**
+     * Propiedad que representa lineas verticales en la interfaz
+     */
     JLabel[][] verticallLines = new JLabel[5][5];
 
+    /**
+     * Constructor de la interfaz
+     * @param title titulo de la aplicacion
+     */
     public Interfaz(String title) {
         super(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,6 +74,11 @@ public class Interfaz extends JFrame {
         }
         pantalla.addMouseListener(new MouseInputAdapter() {
             int count = 0;
+
+            /**
+             * Metodo que obtiene donde se uso el mouse
+             * @param e evento a ser procesado
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int mX = e.getX();
@@ -94,10 +116,20 @@ public class Interfaz extends JFrame {
         pantalla.repaint();
     }
 
+    /**
+     * Metodo que revisa si los objetos estan dentro de los limites de la interfaz
+     * @param l representa un JLabel
+     * @param x representa una coordenada del plano XY
+     * @param y representa una coordenada del plano XY
+     * @return
+     */
     public boolean checkBounds(JLabel l, int x, int y) {
         return (x >= l.getX() && x <= l.getX() + l.getWidth()) && (y >= l.getY() && y <= l.getY() + l.getHeight());
     }
 
+    /**
+     * Metodo que crea una nueva interfaz
+     */
     public static void main(String[] args) {
         new Interfaz("Juego");
     }

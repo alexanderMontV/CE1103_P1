@@ -5,23 +5,66 @@ import com.seleccionables.Circle;
 import com.seleccionables.LineH;
 import com.seleccionables.LineV;
 
+/**
+ * Clase que crea la matriz de juego
+ * @author Alex M., Bryan S., Ernesto Z.
+ */
 public class Matriz {
 
+    /**
+     * Propiedad que representa una fila de la matriz
+     */
     private final DoubleEndedList fila;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col1;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col2;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col3;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col4;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col5;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col6;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col7;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col8;
+    /**
+     * Propiedad que representa una de las columnas de la matriz
+     */
     private final DoubleEndedList col9;
 
+    /**
+     * Propiedad que representa la cantidad de cajas que se han llenado
+     */
     private int cajasLlenas;
 
+    /**
+     * Propiedad que representa si la matriz esta vacia o no
+     */
     private boolean empty;
 
+    /**
+     * Constructor de la matriz
+     */
     public Matriz(){
         this.fila = new DoubleEndedList();
         this.col1 = new DoubleEndedList();
@@ -36,6 +79,10 @@ public class Matriz {
         this.empty=true;
         this.cajasLlenas=0;
     }
+
+    /**
+     * Metodo que inicializa los componentes de la matriz
+     */
     public void initMatrix(){
         this.fila.insertLast(this.col1);
         this.fila.insertLast(this.col2);
@@ -56,15 +103,29 @@ public class Matriz {
         this.empty=false;
     }
 
+    /**
+     * Metodo que obtiene la columna donde se esta posicionado
+     * @param fila una fila de la matriz
+     * @return columna actual
+     */
     private DoubleEndedList getCurrentCol(DoubleEndedList fila) {
         return (DoubleEndedList) fila.getCurrent().getElement();
     }
 
+    /**
+     * Metodo que obtiene una columna de la matriz
+     * @param fila una fila de la matriz
+     * @return columna pedida
+     */
     private DoubleEndedList getCol(Node fila) {
         return (DoubleEndedList) fila.getElement();
     }
 
     //COMPROBACIONES DE NULL PARA getNext
+
+    /**
+     * Metodo para moverse hacia arriba en la matriz
+     */
     public void moverArriba(){
         if (getCurrentElement(this.fila.getCurrent()).getClass() == Circle.class){
             this.fila.prevElement();
@@ -74,6 +135,10 @@ public class Matriz {
             this.fila.prevElement();
         }
     }
+
+    /**
+     * Metodo para moverse hacia abajo en la matriz
+     */
     public void moverAbajo(){
         if (this.fila.getCurrent().getNext() !=null){
                 if (getCurrentElement(this.fila.getCurrent()).getClass() != LineH.class){
@@ -86,7 +151,7 @@ public class Matriz {
     }
 
     /**
-     * Mover derecha funcional
+     * Metodo para moverse hacia la derecha en la matriz
      */
     public void moverDerecha(){
         Node current=this.fila.getHead();
@@ -108,8 +173,8 @@ public class Matriz {
                 }
         }
     }
-    /**f
-     * Mover Izquierda funcional
+    /**
+     * Metodo para moverse hacia la izquierda en la matriz
      * */
     public void moverIzquierda(){
         Node current=this.fila.getHead();
@@ -129,11 +194,20 @@ public class Matriz {
             }
         }
     }
+
+    /**
+     * Metodo que retorna la columna actual
+     * @return columna actual
+     */
     public Node actual(){
         Node col = this.fila.getCurrent();
         DoubleEndedList colum = (DoubleEndedList) col.getElement();
         return colum.getCurrent();
     }
+
+    /**
+     * Metodo que pone las cajas dentro de la matriz
+     */
     public void setBoxes(){
         initCurrent();
         DoubleEndedList Col;
@@ -180,6 +254,12 @@ public class Matriz {
     * TODO: IMPLEMENTAR CHECKBOXES
     *
     * */
+
+    /**
+     * Metodo que revisa si una caja se lleno
+     * @param playerName nombre del jugador
+     * @return True o False
+     */
     public Boolean CheckBoxes(String playerName){
         Node current = fila.getHead();
         while (current !=null) {
@@ -202,10 +282,18 @@ public class Matriz {
 
     }
 
+    /**
+     * Metodo que retorna el elemento actual
+     * @param currentCol columna actual
+     * @return elemento actual
+     */
     public Object getCurrentElement(Node currentCol){
         DoubleEndedList cLL = (DoubleEndedList) currentCol.getElement();
         return cLL.getCurrent().getElement();
     }
+    /**
+     * Metodo que imprime la matriz
+     */
     public void printMat(){
         while (this.fila.getCurrent() != null) {
             getCurrentCol(this.fila).displayList();
@@ -213,6 +301,10 @@ public class Matriz {
         }
         initCurrent();
     }
+
+    /**
+     * Metodo que inicializa las filas
+     */
     public void initCurrent(){
         this.fila.setCurrent(this.fila.getHead());
         while (this.fila.getCurrent() != null) {
@@ -221,10 +313,19 @@ public class Matriz {
         }
         this.fila.setCurrent(this.fila.getHead());
     }
+
+    /**
+     * Metodo que retorna una fila
+     * @return fila
+     */
     public DoubleEndedList getFila(){
         return this.fila;
     }
 
+    /**
+     * Metodo que revisa si la matriz esta vacia
+     * @return True o False
+     */
     public Boolean isEmpty(){
         return this.empty;
     }
