@@ -1,7 +1,5 @@
 package com.estructuras;
 
-import com.estructuras.DoubleEndedList;
-import com.estructuras.Node;
 import com.seleccionables.Box;
 import com.seleccionables.Circle;
 import com.seleccionables.LineH;
@@ -20,6 +18,8 @@ public class Matriz {
     private final DoubleEndedList col8;
     private final DoubleEndedList col9;
 
+    private int cajasLlenas;
+
     private boolean empty;
 
     public Matriz(){
@@ -34,6 +34,7 @@ public class Matriz {
         this.col8 = new DoubleEndedList();
         this.col9 = new DoubleEndedList();
         this.empty=true;
+        this.cajasLlenas=0;
     }
     public void initMatrix(){
         this.fila.insertLast(this.col1);
@@ -179,7 +180,24 @@ public class Matriz {
     * TODO: IMPLEMENTAR CHECKBOXES
     *
     * */
-    public void CheckBoxes(String playerName){
+    public Boolean CheckBoxes(String playerName){
+        Node current = fila.getHead();
+        while (current !=null) {
+            DoubleEndedList col = getCol(current);
+            Node currentNode = col.getHead();
+            while (currentNode !=null){
+                if (currentNode.getElement().getClass() == Box.class){
+                    Box cajatemp = (Box) currentNode.getElement();
+                    if (!cajatemp.isFull() && cajatemp.getSides()){
+                        cajatemp.setName(playerName);
+                        return true;
+                    }
+                }
+                currentNode=currentNode.getNext();
+            }
+            current=current.getNext();
+        }
+        return false;
 
 
     }

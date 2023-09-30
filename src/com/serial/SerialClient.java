@@ -24,7 +24,7 @@ public class SerialClient {
                 this.StopBits,
                 this.Parity);
         MySerialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING,
-                50,
+                85,
                 10000);
         MySerialPort.openPort();
     }
@@ -33,7 +33,8 @@ public class SerialClient {
         if (MySerialPort.bytesAvailable() > 0) { //Se verifica que haya bytes disponibles para leer en el puerto
             byte[] readBuffer = new byte[MySerialPort.bytesAvailable()]; //Se crea un buffer el cual permite tener un control de los bytes que son recibidos del arduino
             int bytesRead = MySerialPort.readBytes(readBuffer, readBuffer.length); //Se leen los datos recibidos
-            data = new String(readBuffer, StandardCharsets.UTF_8); //Se "traducen" los bytes recibidos para poder ser analizados
+            data = new String(readBuffer, StandardCharsets.UTF_8);
+            data= String.valueOf(String.valueOf(data.charAt(0))+String.valueOf(data.charAt(1)));//Se "traducen" los bytes recibidos para poder ser analizados
         }
         return data;
     }

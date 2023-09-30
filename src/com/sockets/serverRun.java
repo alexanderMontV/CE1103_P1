@@ -1,5 +1,7 @@
 package com.sockets;
 
+import com.estructuras.DoubleEndedList;
+import com.estructuras.Node;
 import com.estructuras.Queue;
 import com.estructuras.jugador;
 import com.google.gson.JsonObject;
@@ -7,10 +9,13 @@ import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class serverRun implements Runnable {
+
+    Queue listaJugadores= new Queue();
     public serverRun() {
         Thread escucho = new Thread(this);
         escucho.start();
@@ -18,7 +23,6 @@ public class serverRun implements Runnable {
 
     @Override
     public void run() {
-        Queue listaJugadores= new Queue();
         try {
             ServerSocket server = new ServerSocket(9999); //Socket de entrada que recibe los mensajes
 
@@ -36,6 +40,7 @@ public class serverRun implements Runnable {
                     listaJugadores.enqueue(new jugador(juga.get("Nombre").getAsString(),juga.get("puerto").getAsInt(),juga.get("cuadrosGanados").getAsInt()));
                     System.out.println(listaJugadores.getFirst().getElement());
                 }
+                mysocket.close();
             }
 
         } catch (IOException e) {
@@ -43,5 +48,119 @@ public class serverRun implements Runnable {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void sendMensaje(String key) throws IOException {
+            //mensaje genérico jugadores espera.
+            if (key.equals("OK")) {
+                DoubleEndedList listatodos = this.listaJugadores.getList();
+                Node current = listatodos.getHead();
+                while (current != null) {
+                    jugador tempJugador = (jugador) current.getElement();
+                    Socket socketDestino = new Socket("localhost", tempJugador.getPuerto()); //Socket salida
+                    ObjectOutputStream paqueteE = new ObjectOutputStream(socketDestino.getOutputStream());
+                    //TODO Enviar para Actualizar las matrices clientes
+                    JsonObject jobj = new JsonObject();
+                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("data", "actualizar");
+                    String jsonO = String.valueOf(jobj);
+                    paqueteE.writeObject("paqueteR");
+                    paqueteE.close();
+                    socketDestino.close();
+                    System.out.println("boton OK en SR");
+                    current = current.getNext();
+                }
+                listaJugadores.enqueue(listaJugadores.getFirst());
+                listaJugadores.dequeue();
+
+            }
+            else if (key.equals("ganoCaja")){
+                DoubleEndedList listatodos = this.listaJugadores.getList();
+                Node current = listatodos.getHead();
+                while (current != null) {
+                    jugador tempJugador = (jugador) current.getElement();
+                    Socket socketDestino = new Socket("localhost", tempJugador.getPuerto()); //Socket salida
+
+                    ObjectOutputStream paqueteE = new ObjectOutputStream(socketDestino.getOutputStream());
+
+                    //TODO Enviar para Actualizar las matrices clientes
+                    JsonObject jobj = new JsonObject();
+                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("data", "actualizar");
+                    String jsonO = String.valueOf(jobj);
+                    paqueteE.writeObject("paqueteR");
+
+                    paqueteE.close();
+
+                    socketDestino.close();
+                    System.out.println("boton OK en SR");
+
+                    current = current.getNext();
+                }
+            } else if (key.equals("gameover")) {
+                DoubleEndedList listatodos = this.listaJugadores.getList();
+                Node current = listatodos.getHead();
+                while (current != null) {
+                    jugador tempJugador = (jugador) current.getElement();
+                    Socket socketDestino = new Socket("localhost", tempJugador.getPuerto()); //Socket salida
+
+                    ObjectOutputStream paqueteE = new ObjectOutputStream(socketDestino.getOutputStream());
+
+                    //TODO Enviar para Actualizar las matrices clientes
+                    JsonObject jobj = new JsonObject();
+                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("data", "gameover");
+                    String jsonO = String.valueOf(jobj);
+                    paqueteE.writeObject("paqueteR");
+
+                    paqueteE.close();
+
+                    socketDestino.close();
+                    System.out.println("boton OK en SR");
+
+                    current = current.getNext();
+                }
+            }
+            else {
+                DoubleEndedList listatodos = this.listaJugadores.getList();
+                Node current = listatodos.getHead();
+                while (current != null) {
+                    jugador tempJugador = (jugador) current.getElement();
+                    Socket socketDestino = new Socket("localhost", tempJugador.getPuerto()); //Socket salida
+
+                    ObjectOutputStream paqueteE = new ObjectOutputStream(socketDestino.getOutputStream());
+
+                    //TODO Enviar para Actualizar las matrices clientes
+                    JsonObject jobj = new JsonObject();
+                    jobj.addProperty("mensaje", "OK");
+                    jobj.addProperty("data", "actualizar");
+                    String jsonO = String.valueOf(jobj);
+                    paqueteE.writeObject("paqueteR");
+
+                    paqueteE.close();
+
+                    socketDestino.close();
+                    System.out.println("boton OK en SR");
+
+                    current = current.getNext();
+                }
+                //Mensaje especial al jugador de turno
+                jugador primerJugador = (jugador) this.listaJugadores.getFirst().getElement();
+                Socket socketDestino = new Socket("localhost", primerJugador.getPuerto()); //Socket salida
+
+                ObjectOutputStream paqueteE = new ObjectOutputStream(socketDestino.getOutputStream());
+
+                //TODO envio JSON
+                JsonObject jobj = new JsonObject();
+
+                jobj.addProperty("mensaje", "yourturn");
+                jobj.addProperty("data", key);
+                String jsonO = String.valueOf(jobj);
+
+                paqueteE.writeObject("Se ha movido");
+
+                paqueteE.close();
+
+                socketDestino.close();
+            }
     }
 }
